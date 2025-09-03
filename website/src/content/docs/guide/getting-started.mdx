@@ -1,0 +1,91 @@
+---
+title: Getting Started
+description: Learn how to use the Starlight Nova theme in your documentation.
+sidebar:
+  order: 10
+---
+
+A modern and beautiful theme for [Starlight](https://starlight.astro.build).
+
+## Prerequisites
+
+You will need to have a Starlight website set up.
+
+If you don't have one yet, you can follow the ["Getting Started"](https://starlight.astro.build/getting-started) guide in the Starlight docs to create one.
+
+## Installation
+
+import { Steps } from '@astrojs/starlight/components'
+import { CodePackageManagers } from 'starlight-theme-nova/components'
+
+<Steps>
+
+1. The Starlight Nova theme is a Starlight [plugin](https://starlight.astro.build/reference/plugins/) that you can install using your favorite package manager:
+
+   <CodePackageManagers packages="starlight-theme-nova" />
+
+2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file.
+
+   ```ts twoslash
+   // astro.config.mjs
+   import starlight from '@astrojs/starlight'
+   import { defineConfig } from 'astro/config'
+   import starlightThemeNova from 'starlight-theme-nova'
+
+   export default defineConfig({
+     integrations: [
+       starlight({
+         plugins: [
+           starlightThemeNova(/* options */), // [!code ++]
+         ],
+         title: 'My Docs',
+       }),
+     ],
+   })
+   ```
+
+   Check the [Options](#options) section below for available options.
+
+3. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to preview the theme in action.
+
+</Steps>
+
+That's it! You should now see the Starlight Nova theme applied to your Starlight website.
+
+## Options
+
+### `nav`
+
+You can add optional navigation items to the top navigation bar by passing an array of objects to the `nav` option.
+
+```ts twoslash
+import starlightThemeNova from 'starlight-theme-nova'
+// ---cut---
+starlightThemeNova({
+  nav: [
+    { label: 'Quick start', href: '/guide/getting-started' },
+    { label: 'External link', href: 'https://example.com' },
+  ],
+})
+```
+
+If you want to support multiple languages, you can pass an object with values for each different locale to `label` and `href`. When using the object form, the keys must be BCP-47 tags (e.g. `en`, `ar`, or `zh-CN`) or the `root` key to set the default value:
+
+```ts twoslash
+import starlightThemeNova from 'starlight-theme-nova'
+// ---cut---
+starlightThemeNova({
+  nav: [
+    {
+      label: {
+        en: 'Quick start',
+        'zh-CN': '快速开始',
+      },
+      href: {
+        en: '/guide/getting-started',
+        'zh-CN': '/zh-CN/guide/getting-started',
+      },
+    },
+  ],
+})
+```

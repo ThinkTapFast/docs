@@ -1,0 +1,39 @@
+---
+import type { StarlightIcon } from '@astrojs/starlight/types'
+import type { HTMLAttributes } from 'astro/types'
+import LinkButtonIcon from './LinkButtonIcon.astro'
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'href'> {
+  href: string | URL
+  icon?: StarlightIcon | undefined
+  iconPlacement?: 'start' | 'end' | undefined
+  variant?: 'primary' | 'secondary' | 'minimal'
+}
+
+const {
+  class: className,
+  icon,
+  iconPlacement = 'end',
+  variant = 'primary',
+  ...attrs
+} = Astro.props
+---
+
+<span class="not-content">
+  <a
+    class:list={[
+      'nova-link-button not-content',
+      {
+        'nova-link-button-primary': variant === 'primary',
+        'nova-link-button-secondary': variant === 'secondary',
+        'nova-link-button-minimal': variant === 'minimal',
+      },
+      className,
+    ]}
+    {...attrs}
+  >
+    {icon && iconPlacement === 'start' && <LinkButtonIcon icon={icon} />}
+    <slot />
+    {icon && iconPlacement === 'end' && <LinkButtonIcon icon={icon} />}
+  </a>
+</span>

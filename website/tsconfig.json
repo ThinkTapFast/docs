@@ -1,0 +1,16 @@
+{
+  "extends": "@ocavue/tsconfig/dom/app.json",
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx",
+    "**/*.astro",
+    ".astro/**/*.ts",
+    "./*.mjs"
+  ],
+  "references": [
+    {
+      "path": "../packages/starlight-theme-nova/tsconfig.json"
+    }
+  ]
+}

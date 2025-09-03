@@ -1,0 +1,21 @@
+{
+  "name": "starlight-theme-nova-website",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "postinstall": "astro sync"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.35.2",
+    "astro": "^5.12.7",
+    "sharp": "^0.34.3",
+    "starlight-theme-nova": "workspace:*"
+  }
+}
