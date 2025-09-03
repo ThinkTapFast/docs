@@ -5,6 +5,8 @@ import starlightThemeNova from 'starlight-theme-nova'
 
 // https://astro.build/config
 export default defineConfig({
+  outDir: 'dist',
+  site: 'https://thinktapfast-docs.vercel.app',
   integrations: [
     starlight({
       defaultLocale: 'root',
